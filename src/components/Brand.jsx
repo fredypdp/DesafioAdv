@@ -4,6 +4,11 @@ import { useRef , useState, useEffect } from "react";
 import { Text, Box, Flex, Image, Link as ChakraLink } from "@chakra-ui/react";
 
 export default function Brand() {
+  const comoFuncionaRef = useRef(null);
+  const barraDescricaoRef = useRef(null);
+  const oQueoQueInclusoRef = useRef(null);
+  const [MostrarBarraDescricaoFixa, setMostrarBarraDescricaoFixa] = useState(false);
+
   const [fundoAtual, setFundoAtual] = useState(null);
   const fundos = [
     {
@@ -20,8 +25,21 @@ export default function Brand() {
     setFundoAtual(fundos[0]);
   }, []);
 
-  const oQueoQueInclusoRef = useRef(null);
-  const comoFuncionaRef = useRef(null);
+  useEffect(() => {
+    const handleScroll = () => {
+      const barraDescricaoPosition = barraDescricaoRef.current.getBoundingClientRect().top;
+      const isIncludedBoxPosition = barraDescricaoPosition <= 0;
+      setMostrarBarraDescricaoFixa(isIncludedBoxPosition);
+    };
+  
+    handleScroll(); // Chamar handleScroll() uma vez para verificar a posição inicial
+    // Ouvinte de evento crado para monitorar a rolagem, e executar a função
+    window.addEventListener('scroll', handleScroll);
+  
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const scrollToRef = (ref) => {
     if (ref && ref.current) {
@@ -55,7 +73,24 @@ export default function Brand() {
               </Flex>
             </Flex>
             <Box>
-              <Flex overflowX="scroll" borderBottom="2px solid #ddd" marginTop="60px" gap="32px" fontSize="20px" fontWeight="700"
+              {/* Barra de descrição, fixa */}
+              <Flex gap="32px" fontSize="20px" fontWeight="700" position="fixed" top="0" left="0" width="100%" height="80px" align="center" backgroundColor="white" borderBottom="2px solid #ddd" zIndex="1000" padding={{md: "0px 30px", lg: "0px 130px" }} display={MostrarBarraDescricaoFixa ? { base: "none", md: "flex"} : "none"}>
+                <Box ref={oQueoQueInclusoRef} minWidth="fit-content" borderBottom="2px solid white" _hover={{borderBottom: "2px solid black"}} cursor="pointer" onClick={() => scrollToRef(oQueoQueInclusoRef)}>
+                  <Text>O que está incluso</Text>
+                </Box>
+                <Box ref={comoFuncionaRef} display={{ base: "none", sm: "block"}} minWidth="fit-content" borderBottom="2px solid white" _hover={{borderBottom: "2px solid black"}} cursor="pointer" onClick={() => scrollToRef(comoFuncionaRef)}>
+                  <Text>Como funciona?</Text>
+                </Box>
+                <Box minWidth="fit-content" borderBottom="2px solid white" _hover={{borderBottom: "2px solid black"}} cursor="pointer">
+                  <Text>Preços</Text>
+                </Box>
+                <Box minWidth="fit-content" borderBottom="2px solid white" _hover={{borderBottom: "2px solid black"}} cursor="pointer">
+                  <Text>Perguntas Frequentes</Text>
+                </Box>
+              </Flex>
+
+              {/* Barra de descrição, normal */}
+              <Flex ref={barraDescricaoRef} overflowX="scroll" borderBottom="2px solid #ddd" marginTop="60px" gap="32px" fontSize="20px" fontWeight="700"
               sx={{
                 "&::-webkit-scrollbar": {
                   height: "3px",
@@ -72,7 +107,7 @@ export default function Brand() {
                 <Box ref={oQueoQueInclusoRef} minWidth="fit-content" borderBottom="2px solid white" _hover={{borderBottom: "2px solid black"}} cursor="pointer" onClick={() => scrollToRef(oQueoQueInclusoRef)}>
                   <Text>O que está incluso</Text>
                 </Box>
-                <Box ref={comoFuncionaRef} display={{ base: "none", sm: "block"}} minWidth="fit-content" borderBottom="2px solid white" _hover={{borderBottom: "2px solid black"}} cursor="pointer" onClick={() => scrollToRef(oQueoQueInclusoRef)}>
+                <Box ref={comoFuncionaRef} display={{ base: "none", sm: "block"}} minWidth="fit-content" borderBottom="2px solid white" _hover={{borderBottom: "2px solid black"}} cursor="pointer" onClick={() => scrollToRef(comoFuncionaRef)}>
                   <Text>Como funciona?</Text>
                 </Box>
                 <Box minWidth="fit-content" borderBottom="2px solid white" _hover={{borderBottom: "2px solid black"}} cursor="pointer">
@@ -83,6 +118,7 @@ export default function Brand() {
                 </Box>
               </Flex>
             </Box>
+            
             <Box>
               <Box padding="50px 0px" color="rgb(49, 48, 48)" borderBottom="2px solid #ddd">
                 <Text fontSize="24px" fontWeight="700">Uma marca tão única quanto seu negócio</Text>
@@ -90,7 +126,7 @@ export default function Brand() {
               </Box>
               <Box ref={oQueoQueInclusoRef} padding="50px 0px" color="rgb(49, 48, 48)" borderBottom="2px solid #ddd">
                 <Text fontSize="24px" fontWeight="700" marginBottom="24px">O que está incluso</Text>
-                <Flex ref={comoFuncionaRef} gap="2" fontSize="18px" fontWeight="400" wordBreak="break-word"  flexDirection="column">
+                <Flex gap="2" fontSize="18px" fontWeight="400" wordBreak="break-word"  flexDirection="column">
                   <Flex>
                     <Box>
                       <Icon width="25px" height="25px" icon="heroicons:check-16-solid" />
@@ -180,7 +216,7 @@ export default function Brand() {
                   </Box>
                 </Flex>
               </Flex>
-              <Flex display={{ base: "none", sm: "flex"}} flexDirection="column" padding="64px 0px" borderBottom="2px solid #ddd">
+              <Flex ref={comoFuncionaRef} display={{ base: "none", sm: "flex"}} flexDirection="column" padding="64px 0px" borderBottom="2px solid #ddd">
                 <Text fontSize="24px" fontWeight="700" marginBottom="24px">Como funciona o concurso?</Text>
                 <Flex gap="16px" flexWrap="wrap">
                   <Flex flex="1" flexDirection="column">
