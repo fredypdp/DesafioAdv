@@ -71,17 +71,17 @@ function AppContent() {
       {/* Cabeçalho para Celular */}
       <Box display={{ base: "block", xl: "none" }}>
         {/* Cabeçalho */}
-        <Box as="header" padding="16px" margin="auto" display="flex" alignItems="center">
-          <Flex width="100%" justifyContent="space-between" alignItems="center" padding="0px 16px">
-            <Box flex="1" onClick={() => setBarraLateral(!barraLateral)}>
+        <Box as="header" padding={{ base: "16px 8px", md: "16px"}} margin="auto" display="flex" alignItems="center">
+          <Flex width="100%" justifyContent="space-between" alignItems="center" padding={{ base: "0px 8px", md: "0px 16px"}}>
+            <Box onClick={() => setBarraLateral(!barraLateral)}>
               <Icon width="25px" height="40px" icon="heroicons:bars-3-16-solid" />
             </Box>
-            <Flex flex="1" justifyContent="center">
+            <Flex justifyContent="center">
               <ChakraLink as={Link} to="/" maxWidth="120px" maxHeight="40px">
                 <Image draggable="false" src="https://assets.99static.com/logos/en/wordmark_grey.svg" alt="Logo" />
               </ChakraLink>
             </Flex>
-            <Box flex="1">
+            <Box>
               <Text textAlign="end" color="black" fontWeight="600" marginLeft="24px">
                 <ChakraLink as={Link} to="/" _hover={{textDecoration: "none"}}>Fazer login</ChakraLink>
               </Text>
