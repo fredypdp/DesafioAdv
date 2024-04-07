@@ -13,10 +13,12 @@ export default function Brand() {
   const fundos = [
     {
       id: 1,
+      vencedor: true,
       url: "https://images.ctfassets.net/n5k68ty3nctt/4q8QgGmJ0tNMqJVK7nO4Cd/fa288a5e3fee8724371f4267015ff263/brand-identity-pack.avif?fm=avif&q=80"
     },
     {
       id: 2,
+      vencedor: false,
       url: "https://images.ctfassets.net/n5k68ty3nctt/7dzp2l7SwmUOoV4OmcgHAn/5c842fa7aa4296e43becd926f3660659/logo-and-brand-identity-kit.avif?fm=avif&q=80"
     }
   ];
@@ -53,7 +55,12 @@ export default function Brand() {
         <Flex gap="64px" justifyContent="space-between">
           <Box width="100%" maxWidth="716px">
             <Flex flexDirection="column">
-              <Box maxHeight="525px">
+              <Box position="relative" maxHeight="525px">
+                {fundoAtual && fundoAtual.vencedor && (
+                  <Box position="absolute" top="16px" right="12px">
+                    <Box display="inline-block" color="rgb(255, 255, 255)" lineHeight="1" padding="12px" whiteSpace="nowrap" fontSize="12px" backgroundColor="rgb(254, 95, 80)">Vencedor</Box>
+                  </Box>
+                )}
                 <Image height="100%" maxHeight="100%" draggable="false" src={fundoAtual ? fundoAtual.url : ""} alt="Fundo" />
               </Box>
               <Flex marginTop="20px" justifyContent="space-between">
@@ -238,7 +245,80 @@ export default function Brand() {
               </Flex>
             </Box>
           </Box>
-          <Box display={{ base: "none", lg: "block" }} flex="1" minWidth="270px" height="100vh" backgroundColor="yellow"></Box>
+          <Box position="relative" display={{ base: "none", lg: "block" }} flex="1" maxWidth="488px" minWidth="270px">
+            <Flex maxWidth="inherit" position="fixed" borderRadius="8px" boxShadow="rgb(218, 217, 215) 0px 0px 0px 1px inset" flexDirection="column" padding="32px">
+              <Box marginBottom="24px">
+                <Text fontSize="32px" fontWeight="500">Logo & Identidade Visual</Text>
+              </Box>
+              <Box marginBottom="24px">
+                <Text fontSize="20px" fontWeight="500">A partir de US$ 599</Text>
+              </Box>
+              <Flex gap="2" marginBottom="24px" fontWeight="400" wordBreak="break-word" flexDirection="column">
+                <Flex>
+                  <Box>
+                    <Icon width="25px" height="25px" icon="heroicons:check-16-solid" />
+                  </Box>
+                  <Text textAlign="left" marginLeft="16px">1 design de logotipo finalizado e totalmente personalizado</Text>
+                </Flex>
+                <Flex>
+                  <Box>
+                    <Icon width="25px" height="25px" icon="heroicons:check-16-solid" />
+                  </Box>
+                  <Text textAlign="left" marginLeft="16px">1 design de cartão de visita</Text>
+                </Flex>
+                <Flex>
+                  <Box>
+                    <Icon width="25px" height="25px" icon="heroicons:check-16-solid" />
+                  </Box>
+                  <Text textAlign="left" marginLeft="16px">1 papel timbrado</Text>
+                </Flex>
+                <Flex>
+                  <Box>
+                    <Icon width="25px" height="25px" icon="heroicons:check-16-solid" />
+                  </Box>
+                  <Text textAlign="left" marginLeft="16px">1 envelope</Text>
+                </Flex>
+                <Flex>
+                  <Box>
+                    <Icon width="25px" height="25px" icon="heroicons:check-16-solid" />
+                  </Box>
+                  <Text textAlign="left" marginLeft="16px">1 capa para Facebook</Text>
+                </Flex>
+                <Flex>
+                  <Box>
+                    <Icon width="25px" height="25px" icon="heroicons:check-16-solid" />
+                  </Box>
+                  <Text textAlign="left" marginLeft="16px">Propriedade total dos direitos autorais</Text>
+                </Flex>
+                <Flex>
+                  <Box>
+                    <Icon width="25px" height="25px" icon="heroicons:check-16-solid" />
+                  </Box>
+                  <Text textAlign="left" marginLeft="16px">Arquivos digitais para web e impressão (RGB, CMYK, PNG, JPG, PDF)</Text>
+                </Flex>
+                <Flex>
+                  <Box>
+                    <Icon width="25px" height="25px" icon="heroicons:check-16-solid" />
+                  </Box>
+                  <Text textAlign="left" marginLeft="16px">O arquivo original, editável (ex. AI)</Text>
+                </Flex>
+                <Flex>
+                  <Box>
+                    <Icon width="25px" height="25px" icon="heroicons:check-16-solid" />
+                  </Box>
+                  <Text textAlign="left" marginLeft="16px">100% garantia de satisfação ou o seu dinheiro de volta</Text>
+                </Flex>
+              </Flex>
+              <Flex cursor="pointer" textAlign="center" padding="9px 24px" borderRadius="50px" justifyContent="center" backgroundColor="black">
+                <Flex color="white" fontWeight="700">
+                    <Text>Selecione um pacote</Text>
+                    <Box marginLeft="12px">
+                      <Icon width="25px" height="25px" icon="heroicons:arrow-small-down-20-solid" />
+                    </Box>
+                </Flex>
+              </Flex>
+            </Flex>
+          </Box>
         </Flex>
       </Box>
     </Flex>
