@@ -55,13 +55,13 @@ export default function Brand() {
         <Flex gap="64px" justifyContent="space-between">
           <Box width="100%" maxWidth="716px">
             <Flex flexDirection="column">
-              <Box position="relative" maxHeight="525px">
+              <Box position="relative" maxWidth="700px" maxHeight="525px">
                 {fundoAtual && fundoAtual.vencedor && (
                   <Box position="absolute" top="16px" right="12px">
                     <Box display="inline-block" color="rgb(255, 255, 255)" lineHeight="1" padding="12px" whiteSpace="nowrap" fontSize="12px" backgroundColor="rgb(254, 95, 80)">Vencedor</Box>
                   </Box>
                 )}
-                <Image height="100%" maxHeight="100%" draggable="false" src={fundoAtual ? fundoAtual.url : ""} alt="Fundo" />
+                <Image draggable="false" src={fundoAtual ? fundoAtual.url : ""} alt="Fundo" />
               </Box>
               <Flex marginTop="20px" justifyContent="space-between">
                 <Flex>
