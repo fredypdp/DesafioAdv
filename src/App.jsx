@@ -21,51 +21,89 @@ function AppContent() {
     <main>
       {/* Cabeçalho para Computador */}
       {rota !== "/categorias" ? (
-        <>
-          <Box display={{ base: "none", xl: "block" }}>
-            <Box as="header" display="flex" justifyContent="center" padding="16px" margin="auto">
-              <Flex width="100%" justifyContent="space-between" maxWidth="1268px" alignItems="center">
-                <Flex alignItems="center" paddingRight="16px">
-                  <ChakraLink as={Link} to="/" maxWidth="120px" maxHeight="40px">
-                    <Image src="https://assets.99static.com/logos/en/wordmark_grey.svg" alt="Logo" />
-                  </ChakraLink>
-                  <Flex color="black" marginLeft="32px" fontWeight="600">
-                    <Text marginLeft="24px">
-                      <ChakraLink as={Link} to="/categorias" _hover={{textDecoration: "none"}}>Categorias</ChakraLink>
-                    </Text>
-                    <Text marginLeft="24px">
-                      <ChakraLink as={Link} to="/" _hover={{textDecoration: "none"}}>Como funciona</ChakraLink>
-                    </Text>
-                    <Text marginLeft="24px">
-                      <ChakraLink as={Link} to="/" _hover={{textDecoration: "none"}}>Encontre um designer</ChakraLink>
-                    </Text>
-                    <Text marginLeft="24px">
-                      <ChakraLink as={Link} to="/" _hover={{textDecoration: "none"}}>Inspiração</ChakraLink>
-                    </Text>
-                    <Text marginLeft="24px">
-                      <ChakraLink as={Link} to="/" _hover={{textDecoration: "none"}}>Pro</ChakraLink>
-                    </Text>
-                  </Flex>
-                </Flex>
-                <Flex color="black" fontWeight="600">
-                  <Flex alignItems="center">
-                    <Icon width="25px" icon="heroicons:phone-16-solid" />
-                    <Text marginLeft="24px">
-                      <ChakraLink as={Link} to="/">+1 877 834 4534</ChakraLink>
-                    </Text>
-                  </Flex>
-                  <Flex alignItems="center" marginLeft="24px">
-                    <Text marginLeft="24px">
-                      <ChakraLink as={Link} to="/">Fazer login</ChakraLink>
-                    </Text>
-                  </Flex>
+        <Box display={{ base: "none", xl: "block" }}>
+          <Box as="header" display="flex" justifyContent="center" padding="16px" margin="auto">
+            <Flex width="100%" justifyContent="space-between" maxWidth="1268px" alignItems="center">
+              <Flex alignItems="center" paddingRight="16px">
+                <ChakraLink as={Link} to="/" maxWidth="120px" maxHeight="40px">
+                  <Image src="https://assets.99static.com/logos/en/wordmark_grey.svg" alt="Logo" />
+                </ChakraLink>
+                <Flex gap="24px" color="black" marginLeft="32px" fontWeight="600">
+                  <Text>
+                    <ChakraLink as={Link} to="/categorias" _hover={{textDecoration: "none"}}>Categorias</ChakraLink>
+                  </Text>
+                  <Text>
+                    <ChakraLink as={Link} to="/" _hover={{textDecoration: "none"}}>Como funciona</ChakraLink>
+                  </Text>
+                  <Text>
+                    <ChakraLink as={Link} to="/" _hover={{textDecoration: "none"}}>Encontre um designer</ChakraLink>
+                  </Text>
+                  <Text>
+                    <ChakraLink as={Link} to="/" _hover={{textDecoration: "none"}}>Inspiração</ChakraLink>
+                  </Text>
+                  <Text>
+                    <ChakraLink as={Link} to="/" _hover={{textDecoration: "none"}}>Pro</ChakraLink>
+                  </Text>
                 </Flex>
               </Flex>
-            </Box>
+              <Flex color="black" fontWeight="600">
+                <Flex alignItems="center">
+                  <Icon width="25px" icon="heroicons:phone-16-solid" />
+                  <Text marginLeft="24px">
+                    <ChakraLink as={Link} to="/">+1 877 834 4534</ChakraLink>
+                  </Text>
+                </Flex>
+                <Flex alignItems="center" marginLeft="24px">
+                  <Text marginLeft="24px">
+                    <ChakraLink as={Link} to="/">Fazer login</ChakraLink>
+                  </Text>
+                </Flex>
+              </Flex>
+            </Flex>
           </Box>
-        </>
+        </Box>
       ) : (
-        null
+        <Box display={{ base: "none", xl: "block" }}>
+          <Box as="header" display="flex" justifyContent="center" padding="16px" margin="auto">
+            <Flex width="100%" justifyContent="space-between" maxWidth="970px" alignItems="center">
+              <Flex alignItems="center" paddingRight="16px">
+                <ChakraLink as={Link} to="/" maxWidth="120px" maxHeight="40px">
+                  <Image src="https://assets.99static.com/logos/en/wordmark_grey.svg" alt="Logo" />
+                </ChakraLink>
+                <Flex gap="20px" color="black" marginLeft="32px" fontWeight="600">
+                  <Text>
+                    <ChakraLink as={Link} to="/categorias" _hover={{textDecoration: "none"}}>Categorias</ChakraLink>
+                  </Text>
+                  <Text>
+                    <ChakraLink as={Link} to="/" _hover={{textDecoration: "none"}}>Como funciona</ChakraLink>
+                  </Text>
+                  <Text>
+                    <ChakraLink as={Link} to="/" _hover={{textDecoration: "none"}}>Encontre um designer</ChakraLink>
+                  </Text>
+                  <Text>
+                    <ChakraLink as={Link} to="/" _hover={{textDecoration: "none"}}>Inspiração</ChakraLink>
+                  </Text>
+                  <Text>
+                    <ChakraLink as={Link} to="/" _hover={{textDecoration: "none"}}>Pro</ChakraLink>
+                  </Text>
+                </Flex>
+              </Flex>
+              <Flex gap="20px" color="black" fontWeight="600">
+                <Flex alignItems="center">
+                  <Icon width="25px" icon="heroicons:phone-16-solid" />
+                  <Text>
+                    <ChakraLink as={Link} to="/">+1 877 834 4534</ChakraLink>
+                  </Text>
+                </Flex>
+                <Flex alignItems="center">
+                  <Text>
+                    <ChakraLink as={Link} to="/">Fazer login</ChakraLink>
+                  </Text>
+                </Flex>
+              </Flex>
+            </Flex>
+          </Box>
+        </Box>
       )}
       
       {/* Cabeçalho para Celular */}
