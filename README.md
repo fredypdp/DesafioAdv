@@ -8,5 +8,5 @@ yarn install
 yarn dev
 ``
 
-# Página
+# Link da página
 https://desafio-adv.vercel.app
